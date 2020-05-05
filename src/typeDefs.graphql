@@ -1,0 +1,139 @@
+scalar DateTime
+
+"大陸"
+enum Continent {
+  Asia
+  Europe
+  North_America
+  Africa
+  Oceania
+  Antarctica
+  South_America
+}
+
+"是非(文字列)"
+enum BooleanChar {
+  T
+  F
+}
+
+"ソート方向"
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"国"
+type Country {
+  code: String!
+  name: String!
+  continent: Continent!
+  region: String!
+  surfaceArea: String!
+  indepYear: Int
+  population: Int!
+  lifeExpectancy: String
+  gnp: String
+  gnpOld: String
+  localName: String!
+  governmentForm: String!
+  headOfState: String
+  capital: Int
+  code2: String!
+  cities: [City!]!
+  countrylanguages: [CountryLanguage!]!
+}
+
+"国のソートキー"
+enum CountrySortableField {
+  code
+  name
+  indepYear
+  population
+}
+
+"都市"
+type City {
+  id: Int!
+  name: String!
+  country: Country!
+  district: String!
+  population: Int!
+}
+
+"使用言語"
+type CountryLanguage {
+  language: String!
+  isOfficial: BooleanChar!
+  percentage: String!
+  country: Country!
+}
+
+input CountryFilter {
+  name: String
+  continent: String
+  region: String
+}
+
+input DataPage {
+  skip: Int = 0
+  take: Int = 100
+}
+
+input CountrySort {
+  sortBy: CountrySortableField = code
+  sort: SortDirection = ASC
+}
+
+"Query ルート型"
+type Query {
+  City(id: Int!): City
+  Country(code: String!): Country
+  allCountries(filter: CountryFilter, paging: DataPage, sorting: CountrySort): [Country!]!
+}
+
+"国入力値"
+input CountryInput {
+  code: String!
+  name: String!
+  continent: Continent!
+  region: String!
+  surfaceArea: String!
+  indepYear: Int
+  population: Int!
+  lifeExpectancy: String
+  gnp: String
+  gnpOld: String
+  localName: String!
+  governmentForm: String!
+  headOfState: String
+  capital: Int
+  code2: String!
+}
+
+"都市入力値"
+input CityInput {
+  id: Int
+  name: String!
+  countryCode: String!
+  district: String!
+  population: Int!
+}
+
+"使用言語入力値"
+input CountryLanguageInput {
+  countryCode: String!
+  language: String!
+  isOfficial: BooleanChar!
+  percentage: String!
+}
+
+"Mutation ルート型"
+type Mutation {
+  putCity(city: CityInput!): City!
+  deleteCity(id: Int!): Boolean!
+  putCountry(country: CountryInput!): Country!
+  deleteCountry(code: String!): Boolean!
+  putCountryLanguage(countryLanguage: CountryLanguageInput!): CountryLanguage!
+  deleteCountryLanguage(countryCode: String!, language: String!): Boolean!
+}

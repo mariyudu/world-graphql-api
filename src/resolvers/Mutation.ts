@@ -27,7 +27,6 @@ export const resolverMutation = {
 
     putCountry: async (_: any, args: any) => {
         try {
-        console.log(args.country)
         const country = Country.create(args.country);
 
         await country.save();
@@ -50,7 +49,6 @@ export const resolverMutation = {
 
     putCountryLanguage: async (_: any, args: any) => {
         try {
-        console.log(args.countryLanguage)
         const countryLanguage = Countrylanguage.create(args.countryLanguage);
 
         await countryLanguage.save();
@@ -63,7 +61,6 @@ export const resolverMutation = {
 
     deleteCountryLanguage: async (_: any, args: any) => {
         try {
-        console.log(args);
         const result = await Countrylanguage.delete({countryCode: args.countryCode, language: args.language});
         return result.affected;
         } catch (error) {

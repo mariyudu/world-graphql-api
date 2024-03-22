@@ -3,21 +3,21 @@
    "version": "0.0.1",
    "description": "GraphQL API for World Database with TypeORM.",
    "devDependencies": {
-      "@types/express": "^4.17.6",
+      "@types/express": "^4.17.21",
       "@types/graphql": "^14.5.0",
-      "@types/node": "^14.0.12",
-      "ts-node": "8.10.2",
-      "typescript": "3.9.5"
+      "@types/node": "^20.11.30",
+      "ts-node": "10.9.2",
+      "typescript": "5.4.3"
    },
    "dependencies": {
-      "apollo-server-express": "^2.14.3",
-      "express": "^4.17.1",
-      "graphql": "^15.1.0",
-      "graphql-playground-middleware-express": "^1.7.18",
+      "apollo-server-express": "^3.13.0",
+      "express": "^4.19.1",
+      "graphql": "^16.8.1",
+      "graphql-playground-middleware-express": "^1.7.23",
       "mysql": "^2.18.1",
-      "nodemon": "^2.0.4",
-      "reflect-metadata": "^0.1.13",
-      "typeorm": "^0.2.25"
+      "nodemon": "^3.1.0",
+      "reflect-metadata": "^0.2.1",
+      "typeorm": "^0.3.20"
    },
    "scripts": {
       "start": "ts-node src/index.ts"
